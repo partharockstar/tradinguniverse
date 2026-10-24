@@ -1,0 +1,154 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User account and profile configuration",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The Firebase Auth UID of the user"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Email address of the user"
+        },
+        "name": {
+          "type": "string",
+          "description": "Display name of the trader"
+        },
+        "currency": {
+          "type": "string",
+          "enum": ["USD", "USC"],
+          "description": "Trading currency"
+        },
+        "platform": {
+          "type": "string",
+          "description": "Trading broker/platform"
+        },
+        "balance": {
+          "type": "number",
+          "description": "Account balance"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Creation timestamp"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp"
+        }
+      },
+      "required": ["userId", "email"]
+    },
+    "Trade": {
+      "title": "Trade",
+      "description": "Forex trade record entry",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique trade ID"
+        },
+        "userId": {
+          "type": "string",
+          "description": "Firebase Auth UID of the owner"
+        },
+        "pair": {
+          "type": "string",
+          "description": "Trading pair e.g. EUR/USD or XAU/USD"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["BUY", "SELL"],
+          "description": "Order direction"
+        },
+        "lots": {
+          "type": "number",
+          "description": "Lot size"
+        },
+        "openPrice": {
+          "type": "number",
+          "description": "Open position price"
+        },
+        "closePrice": {
+          "type": "number",
+          "description": "Close position price"
+        },
+        "pnl": {
+          "type": "number",
+          "description": "Profit or loss in account currency"
+        },
+        "pips": {
+          "type": "number",
+          "description": "Pips gained or lost"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["OPEN", "CLOSED"],
+          "description": "Trade execution status"
+        },
+        "time": {
+          "type": "string",
+          "description": "Formatted trade timestamp"
+        },
+        "strategy": {
+          "type": "string",
+          "description": "Strategy or confluence name"
+        },
+        "dateDay": {
+          "type": "number",
+          "description": "Calendar day of month"
+        },
+        "dateMonth": {
+          "type": "number",
+          "description": "Calendar month index (0-11)"
+        },
+        "dateYear": {
+          "type": "number",
+          "description": "Calendar year"
+        },
+        "result": {
+          "type": "string",
+          "enum": ["PROFIT", "LOSS", "BREAKEVEN"],
+          "description": "Manual result outcome"
+        },
+        "openScreenshot": {
+          "type": "string",
+          "description": "Base64 or URL of open screenshot"
+        },
+        "closeScreenshot": {
+          "type": "string",
+          "description": "Base64 or URL of close screenshot"
+        },
+        "notes": {
+          "type": "string",
+          "description": "Trade psychology and notes"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Record creation timestamp"
+        }
+      },
+      "required": ["id", "userId", "pair", "type", "pnl"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": {
+        "$ref": "#/entities/User"
+      },
+      "description": "User profile document storing configuration and balance"
+    },
+    "/users/{userId}/trades/{tradeId}": {
+      "schema": {
+        "$ref": "#/entities/Trade"
+      },
+      "description": "Individual trade records belonging to a user"
+    }
+  }
+}

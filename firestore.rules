@@ -1,0 +1,71 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 1. Global Default-Deny Catch-All
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    // Test connection doc
+    match /test/{docId} {
+      allow read: if true;
+    }
+
+    // Users collection
+    match /users/{userId} {
+      allow get: if isOwner(userId);
+      allow create: if isOwner(userId) &&
+        incoming().userId == request.auth.uid &&
+        incoming().email is string &&
+        incoming().email.size() <= 120;
+      allow update: if isOwner(userId) &&
+        incoming().userId == existing().userId;
+      allow delete: if isOwner(userId);
+
+      // User's Trade Subcollection
+      match /trades/{tradeId} {
+        allow read: if isOwner(userId);
+        allow create: if isOwner(userId) &&
+          isValidId(tradeId) &&
+          incoming().userId == request.auth.uid &&
+          incoming().pair is string &&
+          incoming().pair.size() <= 32;
+        allow update: if isOwner(userId) &&
+          incoming().userId == existing().userId;
+        allow delete: if isOwner(userId);
+      }
+
+      // User's Alert Subcollection
+      match /alerts/{alertId} {
+        allow read: if isOwner(userId);
+        allow create: if isOwner(userId) &&
+          isValidId(alertId) &&
+          incoming().userId == request.auth.uid;
+        allow update: if isOwner(userId) &&
+          incoming().userId == existing().userId;
+        allow delete: if isOwner(userId);
+      }
+    }
+  }
+}

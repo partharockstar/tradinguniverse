@@ -1,0 +1,30 @@
+{
+  "email": "partha.exp5298@gmail.com",
+  "name": "Partha Halder Dip",
+  "avatar": "https://lh3.googleusercontent.com/a/ACg8ocITk8MAbHdqC40qrth1mwoiUfNDFVaXl2pA-8QIiitHp5LI2Vs=s96-c",
+  "connectedAt": "10/18/2026",
+  "activeCurrency": "USC",
+  "accounts": {
+    "USC": {
+      "balance": 100,
+      "trades": [],
+      "updatedAt": "2026-10-18T09:13:18.301Z"
+    },
+    "USD": {
+      "balance": 100,
+      "trades": [],
+      "updatedAt": "2026-10-18T08:59:17.214Z"
+    }
+  },
+  "userConfig": {
+    "currency": "USC",
+    "platform": "Exness",
+    "name": "Partha Halder Dip",
+    "age": 24,
+    "experience": "1 - 3 Years (Intermediate)",
+    "balance": 100
+  },
+  "balance": 100,
+  "trades": [],
+  "updatedAt": "2026-10-18T08:59:21.878Z"
+}

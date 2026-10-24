@@ -1,0 +1,6 @@
+{
+  "name": "Trading Universe - FX Book",
+  "description": "Trading Universe - The Ultimate Forex Journal, Live Market Rates, Community Sentiment, and Trading Analytics Platform.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

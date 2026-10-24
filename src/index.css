@@ -1,0 +1,241 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.012em;
+    min-height: 100%;
+    background-color: #f1f5f9;
+  }
+
+  body {
+    background-color: #f1f5f9;
+    color: #0f172a;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  #root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+  }
+
+  html.dark, html.dark body {
+    background-color: #000000;
+    color: #f4f4f5;
+  }
+}
+
+/* =========================================================================
+   APPLE VISION PRO & macOS STYLE LIQUID GLASS / GLASSMORPHISM DESIGN SYSTEM
+   ========================================================================= */
+
+/* Translucent Liquid Glass Card */
+.apple-liquid-glass,
+.apple-liquid-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+  border-left: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.40), inset 0 1px 0 0 rgba(255, 255, 255, 0.20);
+  border-radius: 24px;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.apple-liquid-glass:hover,
+.apple-liquid-card:hover {
+  background: rgba(255, 255, 255, 0.055);
+  border-color: rgba(255, 255, 255, 0.18);
+  border-top-color: rgba(255, 255, 255, 0.32);
+  box-shadow: 0 20px 48px 0 rgba(0, 0, 0, 0.50), inset 0 1px 1px 0 rgba(255, 255, 255, 0.28);
+}
+
+/* Light Mode Optimization for Liquid Glass (Pure Crystal Frosted Appearance) */
+html:not(.dark) .apple-liquid-glass,
+html:not(.dark) .apple-liquid-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-top: 1px solid rgba(255, 255, 255, 1);
+  border-left: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 16px 40px 0 rgba(15, 23, 42, 0.06), inset 0 1px 0 0 rgba(255, 255, 255, 0.95);
+  border-radius: 24px;
+}
+
+html:not(.dark) .apple-liquid-glass:hover,
+html:not(.dark) .apple-liquid-card:hover {
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 20px 48px 0 rgba(15, 23, 42, 0.09), inset 0 1px 1px 0 rgba(255, 255, 255, 1);
+}
+
+/* Apple Liquid Sidebar */
+.apple-liquid-sidebar {
+  background: rgba(8, 8, 8, 0.85);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 6px 0 32px 0 rgba(0, 0, 0, 0.6), inset -1px 0 0 0 rgba(255, 255, 255, 0.05);
+}
+
+html:not(.dark) .apple-liquid-sidebar {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border-right: 1px solid rgba(226, 232, 240, 0.85);
+  border-top: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 6px 0 32px 0 rgba(15, 23, 42, 0.04), inset -1px 0 0 0 rgba(255, 255, 255, 0.8);
+}
+
+/* Apple Liquid Modal */
+.apple-liquid-modal {
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(30px) saturate(190%);
+  -webkit-backdrop-filter: blur(30px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+  border-left: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 25px 60px 0 rgba(0, 0, 0, 0.8), inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+}
+
+html:not(.dark) .apple-liquid-modal {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(30px) saturate(190%);
+  -webkit-backdrop-filter: blur(30px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-top: 1px solid rgba(255, 255, 255, 1);
+  box-shadow: 0 25px 60px 0 rgba(15, 23, 42, 0.12), inset 0 1px 0 0 rgba(255, 255, 255, 1);
+  border-radius: 24px;
+}
+
+/* Apple Liquid Button */
+.apple-liquid-button {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-top: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.28), inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+  border-radius: 18px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.apple-liquid-button:hover {
+  background: rgba(255, 255, 255, 0.11);
+  border-color: rgba(255, 255, 255, 0.25);
+  border-top-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 12px 30px 0 rgba(0, 0, 0, 0.38), inset 0 1px 1px 0 rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.apple-liquid-button:active {
+  transform: translateY(0) scale(0.985);
+}
+
+html:not(.dark) .apple-liquid-button {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-top: 1px solid rgba(255, 255, 255, 1);
+  box-shadow: 0 6px 18px 0 rgba(15, 23, 42, 0.05), inset 0 1px 0 0 rgba(255, 255, 255, 1);
+}
+
+html:not(.dark) .apple-liquid-button:hover {
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 10px 24px 0 rgba(15, 23, 42, 0.08), inset 0 1px 1px 0 rgba(255, 255, 255, 1);
+}
+
+/* Apple Liquid Primary Button */
+.apple-liquid-primary {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.92), rgba(59, 130, 246, 0.8));
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(147, 197, 253, 0.45);
+  border-top: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: 0 12px 30px 0 rgba(37, 99, 235, 0.45), inset 0 1px 0 0 rgba(255, 255, 255, 0.4);
+  border-radius: 18px;
+  color: #ffffff;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.apple-liquid-primary:hover {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 1), rgba(96, 165, 250, 0.9));
+  box-shadow: 0 16px 36px 0 rgba(37, 99, 235, 0.6), inset 0 1px 1px 0 rgba(255, 255, 255, 0.55);
+  transform: translateY(-1px);
+}
+
+.apple-liquid-primary:active {
+  transform: translateY(0) scale(0.985);
+}
+
+/* Apple Liquid Input / Pill */
+.apple-liquid-input {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.25), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  transition: all 0.2s ease;
+}
+
+.apple-liquid-input:focus {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1), inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+  outline: none;
+}
+
+html:not(.dark) .apple-liquid-input {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(203, 213, 225, 0.8);
+  border-top: 1px solid rgba(255, 255, 255, 1);
+  box-shadow: inset 0 1px 2px 0 rgba(15, 23, 42, 0.04);
+}
+
+html:not(.dark) .apple-liquid-input:focus {
+  background: #ffffff;
+  border-color: rgba(37, 99, 235, 0.6);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* Smooth theme transition for container elements */
+.theme-transition {
+  transition: background-color 0.3s ease,
+              border-color 0.3s ease,
+              color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #71717a;
+  border-radius: 4px;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: #27272a;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1aa;
+}
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+}
